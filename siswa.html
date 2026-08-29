@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+
+  <meta charset="UTF-8">
+
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0">
+
+  <title>Absensi Siswa</title>
+
+  <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+
+<div class="app-shell">
+
+  <header class="topbar">
+
+    <div>
+
+      <div class="eyebrow">
+        ABSENSI DIGITAL
+      </div>
+
+      <h1>Absensi Siswa</h1>
+
+    </div>
+
+    <a href="index.html"
+       class="btn btn-light">
+      ← Beranda
+    </a>
+
+  </header>
+
+
+  <main class="container narrow">
+
+
+    <!-- SESSION INFO -->
+
+    <section class="card">
+
+      <span class="section-kicker">
+        SESI ABSENSI
+      </span>
+
+      <h2 id="sessionClass">
+        Memeriksa sesi...
+      </h2>
+
+      <p id="sessionTeacher">
+        -
+      </p>
+
+      <div id="sessionStatus"
+           class="status-box">
+      </div>
+
+    </section>
+
+
+    <!-- FORM -->
+
+    <section id="attendanceSection"
+             class="card hidden">
+
+      <div class="form-group">
+
+        <label>
+          Kelas
+        </label>
+
+        <input id="classDisplay"
+               type="text"
+               readonly>
+
+      </div>
+
+
+      <div class="form-group">
+
+        <label for="studentSelect">
+          Nama Lengkap
+        </label>
+
+        <select id="studentSelect">
+
+          <option value="">
+            Pilih nama Anda
+          </option>
+
+        </select>
+
+      </div>
+
+
+      <button id="studentAttendBtn"
+              class="btn btn-primary btn-large full-width">
+
+        ✓ HADIR
+
+      </button>
+
+      <p class="form-help">
+        Pastikan Anda memilih nama sendiri.
+        Absensi hanya dapat dilakukan satu kali.
+      </p>
+
+    </section>
+
+
+    <!-- RESULT -->
+
+    <section id="resultSection"
+             class="card result-card hidden">
+
+      <div id="resultIcon"
+           class="result-icon">
+        ✓
+      </div>
+
+      <h2 id="resultTitle">
+        Absensi Berhasil
+      </h2>
+
+      <p id="resultMessage">
+        -
+      </p>
+
+      <div class="result-status"
+           id="resultStatus">
+        -
+      </div>
+
+    </section>
+
+
+    <!-- INVALID SESSION -->
+
+    <section id="invalidSection"
+             class="card error-card hidden">
+
+      <div class="result-icon">
+        !
+      </div>
+
+      <h2>Sesi Tidak Valid</h2>
+
+      <p id="invalidMessage">
+        Sesi absensi sudah ditutup atau tidak valid.
+      </p>
+
+      <a href="index.html"
+         class="btn btn-primary">
+        Kembali
+      </a>
+
+    </section>
+
+
+    <div id="loadingOverlay"
+         class="loading-overlay hidden">
+
+      <div class="loading-box">
+
+        <div class="spinner"></div>
+
+        <p id="loadingText">
+          Memproses...
+        </p>
+
+      </div>
+
+    </div>
+
+
+    <div id="messageBox"
+         class="message-box hidden">
+    </div>
+
+  </main>
+
+</div>
+
+
+<script src="script.js"></script>
+<script src="siswa.js"></script>
+
+</body>
+</html>
