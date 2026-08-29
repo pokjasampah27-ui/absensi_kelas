@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+
+  <meta charset="UTF-8">
+
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1.0">
+
+  <title>Absensi Guru</title>
+
+  <link rel="stylesheet" href="style.css">
+
+  <!-- QR Code -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js">
+  </script>
+
+</head>
+
+<body>
+
+<div class="app-shell">
+
+  <header class="topbar">
+
+    <div>
+      <div class="eyebrow">ABSENSI DIGITAL</div>
+      <h1>Dashboard Guru</h1>
+    </div>
+
+    <a href="index.html" class="btn btn-light">
+      ← Beranda
+    </a>
+
+  </header>
+
+
+  <main class="container">
+
+    <!-- SETUP SESSION -->
+
+    <section id="setupSection"
+             class="card">
+
+      <div class="section-title">
+
+        <div>
+          <span class="section-kicker">LANGKAH 1</span>
+          <h2>Mulai Absensi</h2>
+        </div>
+
+      </div>
+
+
+      <div class="form-grid">
+
+        <div class="form-group">
+
+          <label for="teacherSelect">
+            Nama Guru
+          </label>
+
+          <select id="teacherSelect">
+
+            <option value="">
+              Memuat guru...
+            </option>
+
+          </select>
+
+        </div>
+
+
+        <div class="form-group">
+
+          <label for="classSelect">
+            Kelas
+          </label>
+
+          <select id="classSelect">
+
+            <option value="">
+              Memuat kelas...
+            </option>
+
+          </select>
+
+        </div>
+
+      </div>
+
+
+      <button id="startSessionBtn"
+              class="btn btn-primary btn-large full-width">
+
+        ✓ HADIR & MULAI ABSENSI
+
+      </button>
+
+    </section>
+
+
+    <!-- DASHBOARD -->
+
+    <section id="dashboardSection"
+             class="hidden">
+
+      <section class="card session-header">
+
+        <div>
+
+          <span class="section-kicker">
+            SESI AKTIF
+          </span>
+
+          <h2 id="dashboardClass">
+            -
+          </h2>
+
+          <p id="dashboardTeacher">
+            -
+          </p>
+
+          <p id="dashboardStart">
+            -
+          </p>
+
+        </div>
+
+
+        <div class="session-actions">
+
+          <button id="refreshBtn"
+                  class="btn btn-secondary">
+
+            ↻ Refresh
+
+          </button>
+
+          <button id="closeSessionBtn"
+                  class="btn btn-danger">
+
+            Tutup Sesi
+
+          </button>
+
+        </div>
+
+      </section>
+
+
+      <!-- QR -->
+
+      <section class="card qr-card">
+
+        <span class="section-kicker">
+          SCAN SISWA
+        </span>
+
+        <h2>Tampilkan QR Code</h2>
+
+        <div id="qrcode"
+             class="qr-wrapper">
+        </div>
+
+        <p class="qr-help">
+          Siswa cukup memindai QR Code ini
+          menggunakan kamera HP.
+        </p>
+
+        <div id="studentUrl"
+             class="student-url">
+        </div>
+
+      </section>
+
+
+      <!-- STATISTICS -->
+
+      <section class="stats-grid">
+
+        <div class="stat-card">
+          <span>Total Siswa</span>
+          <strong id="totalCount">0</strong>
+        </div>
+
+        <div class="stat-card success">
+          <span>Hadir</span>
+          <strong id="hadirCount">0</strong>
+        </div>
+
+        <div class="stat-card warning">
+          <span>Terlambat</span>
+          <strong id="lateCount">0</strong>
+        </div>
+
+        <div class="stat-card sick">
+          <span>Sakit</span>
+          <strong id="sickCount">0</strong>
+        </div>
+
+        <div class="stat-card permit">
+          <span>Izin</span>
+          <strong id="permitCount">0</strong>
+        </div>
+
+        <div class="stat-card danger">
+          <span>Alpa</span>
+          <strong id="alpaCount">0</strong>
+        </div>
+
+        <div class="stat-card neutral">
+          <span>Belum Absen</span>
+          <strong id="belumCount">0</strong>
+        </div>
+
+      </section>
+
+
+      <!-- MANUAL -->
+
+      <section class="card">
+
+        <div class="section-title">
+
+          <div>
+            <span class="section-kicker">
+              ABSENSI MANUAL
+            </span>
+
+            <h2>Siswa Belum Hadir</h2>
+          </div>
+
+        </div>
+
+
+        <div class="manual-toolbar">
+
+          <select id="manualStatus">
+
+            <option value="SAKIT">
+              Sakit
+            </option>
+
+            <option value="IZIN">
+              Izin
+            </option>
+
+            <option value="ALPA">
+              Alpa
+            </option>
+
+          </select>
+
+          <button id="manualSaveBtn"
+                  class="btn btn-primary">
+
+            Simpan Status
+
+          </button>
+
+        </div>
+
+
+        <div id="manualStudents"
+             class="manual-list">
+
+          <div class="empty-state">
+            Memuat data...
+          </div>
+
+        </div>
+
+      </section>
+
+
+      <!-- TABLE -->
+
+      <section class="card">
+
+        <div class="section-title">
+
+          <div>
+            <span class="section-kicker">
+              MONITORING
+            </span>
+
+            <h2>Daftar Absensi</h2>
+          </div>
+
+        </div>
+
+
+        <div class="table-wrapper">
+
+          <table>
+
+            <thead>
+
+              <tr>
+                <th>No</th>
+                <th>Nama</th>
+                <th>NIS</th>
+                <th>Status</th>
+                <th>Waktu</th>
+                <th>Keterangan</th>
+              </tr>
+
+            </thead>
+
+            <tbody id="attendanceTableBody">
+
+            </tbody>
+
+          </table>
+
+        </div>
+
+      </section>
+
+    </section>
+
+
+    <!-- LOADING -->
+
+    <div id="loadingOverlay"
+         class="loading-overlay hidden">
+
+      <div class="loading-box">
+
+        <div class="spinner"></div>
+
+        <p id="loadingText">
+          Memproses...
+        </p>
+
+      </div>
+
+    </div>
+
+
+    <!-- MESSAGE -->
+
+    <div id="messageBox"
+         class="message-box hidden">
+
+    </div>
+
+  </main>
+
+</div>
+
+
+<script src="script.js"></script>
+<script src="admin.js"></script>
+
+</body>
+</html>
