@@ -17,7 +17,7 @@ const CONFIG = {
    */
 
   API_URL:
-    "PASTE_URL_WEB_APP_GOOGLE_APPS_SCRIPT_DI_SINI"
+    "https://script.google.com/macros/s/AKfycbxaEFg2z7jpMqaKR3Xi7MCkiVpsKPRdEt5Ei_RIzIbyeiJBQx_zjJlslvu5cqp95L43Fg/exec"
 
 };
 
